@@ -30,7 +30,7 @@ class MyWidget extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.yellow[500], Colors.red[300]])),
+                colors: [Colors.yellow[700], Colors.red[300]])),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -56,15 +56,20 @@ class MyWidget extends StatelessWidget {
                             MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
                             if (states.contains(MaterialState.pressed))
-                              return Colors.green[700];
-                            return Colors.purple[400];
+                              return Colors.yellow[700];
+                            return Colors.purple[300];
                           },
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          new MaterialPageRoute(builder: (context) => Page2()),
+                        );
+                      },
                       child: Text(
                         'Join Your Buddies',
-                        style: TextStyle(
+                        style: GoogleFonts.aBeeZee(
                           color: Colors.white,
                           fontSize: 25,
                         ),
@@ -84,8 +89,8 @@ class MyWidget extends StatelessWidget {
                             MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
                             if (states.contains(MaterialState.pressed))
-                              return Colors.green[700];
-                            return Colors.purple[400];
+                              return Colors.yellow[700];
+                            return Colors.purple[300];
                           },
                         ),
                       ),
@@ -97,7 +102,7 @@ class MyWidget extends StatelessWidget {
                       },
                       child: Text(
                         'Make new friends',
-                        style: TextStyle(
+                        style: GoogleFonts.aBeeZee(
                           color: Colors.white,
                           fontSize: 25,
                         ),
