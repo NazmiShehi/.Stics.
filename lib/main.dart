@@ -75,7 +75,7 @@ class MyWidget extends StatelessWidget {
                           'Join Your Buddies',
                           style: GoogleFonts.aBeeZee(
                             color: Colors.white,
-                            fontSize: 15,
+                            fontSize: 18,
                           ),
                         ),
                       ),
@@ -109,7 +109,7 @@ class MyWidget extends StatelessWidget {
                           'Make new friends',
                           style: GoogleFonts.aBeeZee(
                             color: Colors.white,
-                            fontSize: 15,
+                            fontSize: 18,
                           ),
                         ),
                       ),

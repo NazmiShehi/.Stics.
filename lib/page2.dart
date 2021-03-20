@@ -16,6 +16,7 @@ class Page2 extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -24,11 +25,74 @@ class Page2 extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'Your first buddy is:',
+                    'Looking for your buddies...',
                     style: GoogleFonts.aBeeZee(
                       fontSize: 30,
                       color: Colors.white,
                     ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: DelayedDisplay(
+                delay: Duration(seconds: 4),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Your buddies are currently offline',
+                    style: GoogleFonts.aBeeZee(
+                      fontSize: 30,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 100,
+            ),
+            DelayedDisplay(
+              delay: Duration(seconds: 5),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed))
+                        return Colors.yellow[700];
+                      return Colors.purple[300];
+                    },
+                  ),
+                ),
+                onPressed: () {},
+                child: Text(
+                  'Call them now',
+                  style: GoogleFonts.aBeeZee(
+                    color: Colors.white,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+            ),
+            DelayedDisplay(
+              delay: Duration(seconds: 5),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed))
+                        return Colors.yellow[700];
+                      return Colors.purple[300];
+                    },
+                  ),
+                ),
+                onPressed: () {},
+                child: Text(
+                  'Schedule a Call',
+                  style: GoogleFonts.aBeeZee(
+                    color: Colors.white,
+                    fontSize: 25,
                   ),
                 ),
               ),
