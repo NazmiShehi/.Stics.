@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/login.dart';
 import 'package:flutter_application_1/page2.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'page3.dart';
@@ -37,12 +39,18 @@ class MyWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image(
-                image: AssetImage('assets/stics4.png'),
-                width: 200,
+              IconButton(
+                icon: Image.asset('assets/stics4.png'),
+                iconSize: 150,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(builder: (context) => Login()),
+                  );
+                },
               ),
               Container(
-                height: 150,
+                height: 100,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

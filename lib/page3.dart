@@ -39,7 +39,7 @@ class Page3 extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: DelayedDisplay(
-                delay: Duration(seconds: 3),
+                delay: Duration(seconds: 4),
                 child: Text(
                   'Your first buddy is:',
                   style: GoogleFonts.aBeeZee(

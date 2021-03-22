@@ -60,8 +60,8 @@ class Page2 extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
-                        return Colors.yellow[700];
-                      return Colors.purple[300];
+                        return Colors.purple[300];
+                      return Colors.yellow[700];
                     },
                   ),
                 ),
@@ -82,8 +82,8 @@ class Page2 extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
-                        return Colors.yellow[700];
-                      return Colors.purple[300];
+                        return Colors.purple[300];
+                      return Colors.yellow[700];
                     },
                   ),
                 ),
@@ -97,6 +97,15 @@ class Page2 extends StatelessWidget {
                 ),
               ),
             ),
+            Container(
+              height: 20,
+            ),
+            // CircularProgressIndicator(
+            //  valueColor: AlwaysStoppedAnimation(
+            //  Colors.purple[300],
+            // ),
+            // backgroundColor: Colors.yellow[700],
+            //  ),
           ],
         ),
       ),
