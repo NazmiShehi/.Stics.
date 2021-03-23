@@ -2,7 +2,12 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Page3 extends StatelessWidget {
+class Page3 extends StatefulWidget {
+  @override
+  _Page3State createState() => _Page3State();
+}
+
+class _Page3State extends State<Page3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +32,7 @@ class Page3 extends StatelessWidget {
                     'Looking for buddies from all over the world...',
                     style: GoogleFonts.aBeeZee(
                       fontSize: 30,
-                      color: Colors.white,
+                      color: Colors.black54,
                     ),
                   ),
                 ),
@@ -44,7 +49,7 @@ class Page3 extends StatelessWidget {
                   'Your first buddy is:',
                   style: GoogleFonts.aBeeZee(
                     fontSize: 30,
-                    color: Colors.white,
+                    color: Colors.black54,
                   ),
                 ),
               ),

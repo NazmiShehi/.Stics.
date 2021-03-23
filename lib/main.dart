@@ -5,6 +5,14 @@ import 'package:flutter_application_1/page2.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'page3.dart';
 import 'page2.dart';
+import 'login.dart';
+
+class Buddy {
+  String country = '';
+  String name = '';
+}
+
+String welcomeText = '';
 
 void main() {
   runApp(MyApp());
@@ -67,8 +75,8 @@ class MyWidget extends StatelessWidget {
                               MaterialStateProperty.resolveWith<Color>(
                             (Set<MaterialState> states) {
                               if (states.contains(MaterialState.pressed))
-                                return Colors.yellow[700];
-                              return Colors.purple[300];
+                                return Colors.red[300];
+                              return Colors.yellow[800];
                             },
                           ),
                         ),
@@ -82,7 +90,7 @@ class MyWidget extends StatelessWidget {
                         child: Text(
                           'Join Your Buddies',
                           style: GoogleFonts.aBeeZee(
-                            color: Colors.white,
+                            color: Colors.black54,
                             fontSize: 18,
                           ),
                         ),
@@ -101,8 +109,8 @@ class MyWidget extends StatelessWidget {
                               MaterialStateProperty.resolveWith<Color>(
                             (Set<MaterialState> states) {
                               if (states.contains(MaterialState.pressed))
-                                return Colors.yellow[700];
-                              return Colors.purple[300];
+                                return Colors.red[300];
+                              return Colors.yellow[800];
                             },
                           ),
                         ),
@@ -116,7 +124,7 @@ class MyWidget extends StatelessWidget {
                         child: Text(
                           'Make new friends',
                           style: GoogleFonts.aBeeZee(
-                            color: Colors.white,
+                            color: Colors.black54,
                             fontSize: 18,
                           ),
                         ),
@@ -124,6 +132,16 @@ class MyWidget extends StatelessWidget {
                     ],
                   ),
                 ],
+              ),
+              Container(
+                height: 100,
+              ),
+              Text(
+                '$welcomeText',
+                style: GoogleFonts.aBeeZee(
+                  color: Colors.yellow[700],
+                  fontSize: 35,
+                ),
               ),
             ],
           ),

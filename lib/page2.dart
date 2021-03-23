@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/calendar.dart';
+import 'package:flutter_application_1/login.dart';
+import 'package:flutter_application_1/page3.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:delayed_display/delayed_display.dart';
+import 'package:table_calendar/table_calendar.dart';
 
-class Page2 extends StatelessWidget {
+class Page2 extends StatefulWidget {
+  @override
+  _Page2State createState() => _Page2State();
+}
+
+class _Page2State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,8 +69,8 @@ class Page2 extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
-                        return Colors.purple[300];
-                      return Colors.yellow[700];
+                        return Colors.red[300];
+                      return Colors.yellow[800];
                     },
                   ),
                 ),
@@ -69,7 +78,7 @@ class Page2 extends StatelessWidget {
                 child: Text(
                   'Call them now',
                   style: GoogleFonts.aBeeZee(
-                    color: Colors.white,
+                    color: Colors.black54,
                     fontSize: 25,
                   ),
                 ),
@@ -82,30 +91,24 @@ class Page2 extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
-                        return Colors.purple[300];
-                      return Colors.yellow[700];
+                        return Colors.red[300];
+                      return Colors.yellow[800];
                     },
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) => MyApp2()));
+                },
                 child: Text(
                   'Schedule a Call',
                   style: GoogleFonts.aBeeZee(
-                    color: Colors.white,
+                    color: Colors.black54,
                     fontSize: 25,
                   ),
                 ),
               ),
             ),
-            Container(
-              height: 20,
-            ),
-            // CircularProgressIndicator(
-            //  valueColor: AlwaysStoppedAnimation(
-            //  Colors.purple[300],
-            // ),
-            // backgroundColor: Colors.yellow[700],
-            //  ),
           ],
         ),
       ),
