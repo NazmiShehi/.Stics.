@@ -1,10 +1,9 @@
+import 'package:Stics/calendar.dart';
+import 'page1.dart';
+import 'index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/calendar.dart';
-import 'package:flutter_application_1/login.dart';
-import 'package:flutter_application_1/page3.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:delayed_display/delayed_display.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class Page2 extends StatefulWidget {
   @override
@@ -12,104 +11,139 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
+  //CalendarController _calendarController = CalendarController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[300],
+      extendBody: true,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_back),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red[300],
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Page1()));
         },
+        child: Icon(
+          Icons.arrow_back_ios_rounded,
+        ),
       ),
-      body: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: DelayedDisplay(
-                delay: Duration(seconds: 1),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Looking for your buddies...',
-                    style: GoogleFonts.aBeeZee(
-                      fontSize: 30,
-                      color: Colors.white,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.red[300], Colors.yellow[700]],
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: DelayedDisplay(
+                  delay: Duration(seconds: 1),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Looking for your buddies...',
+                      style: GoogleFonts.aBeeZee(
+                        fontSize: 30,
+                        color: Colors.white70,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: DelayedDisplay(
-                delay: Duration(seconds: 4),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Your buddies are currently offline',
-                    style: GoogleFonts.aBeeZee(
-                      fontSize: 30,
-                      color: Colors.white,
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: DelayedDisplay(
+                  delay: Duration(seconds: 4),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Your buddies are currently offline',
+                      style: GoogleFonts.aBeeZee(
+                        fontSize: 30,
+                        color: Colors.white70,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              height: 100,
-            ),
-            DelayedDisplay(
-              delay: Duration(seconds: 5),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
+              Container(
+                height: 100,
+              ),
+              DelayedDisplay(
+                delay: Duration(seconds: 5),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Colors.yellow[700];
+                        }
                         return Colors.red[300];
-                      return Colors.yellow[800];
-                    },
+                      },
+                    ),
                   ),
-                ),
-                onPressed: () {},
-                child: Text(
-                  'Call them now',
-                  style: GoogleFonts.aBeeZee(
-                    color: Colors.black54,
-                    fontSize: 25,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => IndexPage()));
+                  },
+                  child: Text(
+                    'Call them now',
+                    style: GoogleFonts.aBeeZee(
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
                   ),
                 ),
               ),
-            ),
-            DelayedDisplay(
-              delay: Duration(seconds: 5),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
+              DelayedDisplay(
+                delay: Duration(seconds: 5),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Colors.yellow[700];
+                        }
                         return Colors.red[300];
-                      return Colors.yellow[800];
-                    },
+                      },
+                    ),
                   ),
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      new MaterialPageRoute(builder: (context) => MyApp2()));
-                },
-                child: Text(
-                  'Schedule a Call',
-                  style: GoogleFonts.aBeeZee(
-                    color: Colors.black54,
-                    fontSize: 25,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Calendar()));
+                  },
+                  child: Text(
+                    'Schedule a Call',
+                    style: GoogleFonts.aBeeZee(
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+              //    Container(
+              //      margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+              //    height: 500,
+              //   decoration: BoxDecoration(
+              //   color: Colors.white,
+              // borderRadius: BorderRadius.circular(6),
+              // gradient:
+              //   LinearGradient(colors: [Colors.red[50], Colors.red[300]]),
+              //  boxShadow: [
+              //  BoxShadow(color: Colors.black12, offset: Offset(0, 5)),
+              //  ],
+              //  ),
+              //  child: TableCalendar(
+              //  calendarController: _calendarController,
+              // ),
+              //   ),
+            ],
+          ),
         ),
       ),
     );
