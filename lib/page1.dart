@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'login.dart';
-
 import 'page2.dart';
 import 'page3.dart';
 
@@ -28,9 +26,9 @@ class _Page1State extends State<Page1> {
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [Colors.yellow[700], Colors.red[300]])),
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.purple[200], Colors.red[200]])),
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +66,7 @@ class _Page1State extends State<Page1> {
                               if (states.contains(MaterialState.pressed)) {
                                 return Colors.red[300];
                               }
-                              return Colors.yellow[800];
+                              return Colors.purple[300];
                             },
                           ),
                         ),
@@ -80,7 +78,7 @@ class _Page1State extends State<Page1> {
                         },
                         child: Text(
                           'Join Your Buddies',
-                          style: GoogleFonts.aBeeZee(
+                          style: TextStyle(
                             fontSize: 18,
                             color: Colors.white70,
                           ),
@@ -102,7 +100,7 @@ class _Page1State extends State<Page1> {
                               if (states.contains(MaterialState.pressed)) {
                                 return Colors.red[300];
                               }
-                              return Colors.yellow[800];
+                              return Colors.purple[300];
                             },
                           ),
                         ),
@@ -114,7 +112,7 @@ class _Page1State extends State<Page1> {
                         },
                         child: Text(
                           'Make new friends',
-                          style: GoogleFonts.aBeeZee(
+                          style: TextStyle(
                             fontSize: 18,
                             color: Colors.white70,
                           ),
@@ -124,32 +122,28 @@ class _Page1State extends State<Page1> {
                   ),
                 ],
               ),
-              Container(
-                height: 200,
-              ),
+              Spacer(),
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: DelayedDisplay(
-                        delay: Duration(seconds: 1),
-                        fadingDuration: Duration(seconds: 1),
-                        child: Text(
-                          '$welcomeText',
-                          style: GoogleFonts.aBeeZee(
-                            fontSize: 25,
-                            color: Colors.white70,
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: DelayedDisplay(
+                      delay: Duration(seconds: 1),
+                      fadingDuration: Duration(seconds: 1),
+                      child: Text(
+                        '$welcomeText',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white70,
                         ),
                       ),
                     ),
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    child: Image.asset(''),
-                  ),
+                  // CircleAvatar(
+                  //   backgroundColor: Colors.transparent,
+                  //   child: Image.asset(''),
+                  // ),
                 ],
               ),
             ],

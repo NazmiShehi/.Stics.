@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "10175116846",
+    "project_id": "stics-4f713",
+    "storage_bucket": "stics-4f713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10175116846:android:0e5df3c913a14b92d651bf",
+        "android_client_info": {
+          "package_name": "com.nazmishehi.stics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10175116846-mfafnpdq8f7ug0ko909sghp4smvr9jtr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSvSUQSVOtOyz4jtM3TxZkVYyXS0I6xdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10175116846-mfafnpdq8f7ug0ko909sghp4smvr9jtr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'page1.dart';
 
 String name = '';
@@ -27,7 +26,7 @@ class _LoginState extends State<Login> {
               gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
-                  colors: [Colors.yellow[700], Colors.red[300]])),
+                  colors: [Colors.purple[200], Colors.teal[200]])),
           child: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -76,7 +75,7 @@ class _LoginState extends State<Login> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             labelText: 'Username',
-                            labelStyle: GoogleFonts.aBeeZee(
+                            labelStyle: TextStyle(
                               color: Colors.white70,
                             ),
                           ),
@@ -99,7 +98,7 @@ class _LoginState extends State<Login> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             labelText: 'Password',
-                            labelStyle: GoogleFonts.aBeeZee(
+                            labelStyle: TextStyle(
                               color: Colors.white70,
                             ),
                           ),
@@ -116,9 +115,9 @@ class _LoginState extends State<Login> {
                             MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
                             if (states.contains(MaterialState.pressed)) {
-                              return Colors.red[300];
+                              return Colors.yellow[700];
                             }
-                            return Colors.yellow[700];
+                            return Colors.red[300];
                           },
                         ),
                       ),
@@ -138,7 +137,7 @@ class _LoginState extends State<Login> {
                         padding: EdgeInsets.all(5),
                         child: Text(
                           'Login',
-                          style: GoogleFonts.aBeeZee(
+                          style: TextStyle(
                             fontSize: 30,
                             color: Colors.white70,
                           ),

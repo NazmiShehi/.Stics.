@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stics/aftercall.dart';
 import 'settings.dart';
-import 'index.dart';
 
 class CallPage extends StatefulWidget {
   /// non-modifiable channel name of the page
@@ -294,7 +293,10 @@ class _CallPageState extends State<CallPage> {
   }
 
   void _onCallEnd(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AfterCall()),
+    );
   }
 
   void _onToggleMute() {
@@ -318,7 +320,7 @@ class _CallPageState extends State<CallPage> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red[300], Colors.yellow[700]])),
+                colors: [Colors.red[200], Colors.purple[200]])),
         child: SafeArea(
           child: Center(
             child: Padding(

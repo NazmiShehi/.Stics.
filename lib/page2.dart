@@ -1,8 +1,7 @@
-import 'package:Stics/calendar.dart';
+import 'package:stics/calendar.dart';
 import 'page1.dart';
 import 'index.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:delayed_display/delayed_display.dart';
 
 class Page2 extends StatefulWidget {
@@ -30,9 +29,9 @@ class _Page2State extends State<Page2> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [Colors.red[300], Colors.yellow[700]],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.red[200], Colors.purple[200]],
           ),
         ),
         child: SafeArea(
@@ -47,7 +46,7 @@ class _Page2State extends State<Page2> {
                     alignment: Alignment.center,
                     child: Text(
                       'Looking for your buddies...',
-                      style: GoogleFonts.aBeeZee(
+                      style: TextStyle(
                         fontSize: 30,
                         color: Colors.white70,
                       ),
@@ -63,7 +62,7 @@ class _Page2State extends State<Page2> {
                     alignment: Alignment.center,
                     child: Text(
                       'Your buddies are currently offline',
-                      style: GoogleFonts.aBeeZee(
+                      style: TextStyle(
                         fontSize: 30,
                         color: Colors.white70,
                       ),
@@ -74,6 +73,7 @@ class _Page2State extends State<Page2> {
               Container(
                 height: 100,
               ),
+
               DelayedDisplay(
                 delay: Duration(seconds: 5),
                 child: ElevatedButton(
@@ -93,13 +93,14 @@ class _Page2State extends State<Page2> {
                   },
                   child: Text(
                     'Call them now',
-                    style: GoogleFonts.aBeeZee(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
                     ),
                   ),
                 ),
               ),
+
               DelayedDisplay(
                 delay: Duration(seconds: 5),
                 child: ElevatedButton(
@@ -119,7 +120,7 @@ class _Page2State extends State<Page2> {
                   },
                   child: Text(
                     'Schedule a Call',
-                    style: GoogleFonts.aBeeZee(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
                     ),

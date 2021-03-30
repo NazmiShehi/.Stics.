@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/rendering.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'call.dart';
 
@@ -40,94 +41,131 @@ class IndexState extends State<IndexPage> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
             colors: [
-              Colors.yellow[700],
-              Colors.red[300],
+              Colors.purple[200],
+              Colors.teal[200],
             ],
           ),
         ),
         child: SafeArea(
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 400,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  DelayedDisplay(
+                    delay: Duration(seconds: 1),
+                    fadingDuration: Duration(seconds: 1),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Image(
+                        image: AssetImage('assets/twobuddies.png'),
+                        height: 150,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                  ),
+                  DelayedDisplay(
+                    delay: Duration(
+                      seconds: 2,
+                    ),
+                    fadingDuration: Duration(seconds: 1),
+                    child: Text(
+                      'Are you ready to meet your new buddies?',
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white70,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: DelayedDisplay(
+                      delay: Duration(seconds: 4),
+                      fadingDuration: Duration(seconds: 1),
+                      child: Column(
                         children: <Widget>[
-                          Expanded(
-                              child: TextField(
-                            controller: _channelController,
-                            decoration: InputDecoration(
-                                errorText: _validateError
-                                    ? 'Channel name is mandatory'
-                                    : null,
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(width: 1),
-                                ),
-                                hintText: 'How\'s your budddy group called?'),
-                            style: TextStyle(color: Colors.white70),
-                          ))
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ListTile(
-                            title: Stack(
-                              children: [
-                                Text(
-                                  'Are you ready?',
-                                  style: GoogleFonts.aBeeZee(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                                Text(
-                                  ClientRole.Broadcaster.toString(),
-                                  style: TextStyle(
-                                    color: Colors.transparent,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            leading: Radio(
-                              value: ClientRole.Broadcaster,
-                              groupValue: _role,
-                              onChanged: (ClientRole value) {
-                                setState(() {
-                                  _role = value;
-                                });
-                              },
-                            ),
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                  child: TextField(
+                                controller: _channelController,
+                                decoration: InputDecoration(
+                                    errorText: _validateError
+                                        ? 'Don\' t forget to put you buddy group name here'
+                                        : null,
+                                    border: OutlineInputBorder(
+                                      borderRadius: const BorderRadius.all(
+                                        const Radius.circular(10.0),
+                                      ),
+                                    ),
+                                    filled: true,
+                                    hintText:
+                                        'How\'s your budddy group called?',
+                                    hintStyle: TextStyle(
+                                        color: Colors.white70, fontSize: 18)),
+                                style: TextStyle(color: Colors.white70),
+                              ))
+                            ],
                           ),
-                          //  ListTile(
-                          //  title: Text(ClientRole.Audience.toString()),
-                          //leading: Radio(
-                          //value: ClientRole.Audience,
-                          //groupValue: _role,
-                          //onChanged: (ClientRole value) {
-                          //setState(() {
-                          //_role = value;
-                          //});
-                          //  },
-                          // ),
-                          // ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: ElevatedButton(
+                          Column(
+                            children: [
+                              Opacity(
+                                opacity: 0,
+                                child: ListTile(
+                                  title: Stack(
+                                    children: [
+                                      Text(
+                                        'Are you ready?',
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      Text(
+                                        ClientRole.Broadcaster.toString(),
+                                        style: TextStyle(
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  leading: Radio(
+                                    value: ClientRole.Broadcaster,
+                                    groupValue: _role,
+                                    onChanged: (ClientRole value) {
+                                      setState(() {
+                                        _role = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                              //  ListTile(
+                              //  title: Text(ClientRole.Audience.toString()),
+                              //leading: Radio(
+                              //value: ClientRole.Audience,
+                              //groupValue: _role,
+                              //onChanged: (ClientRole value) {
+                              //setState(() {
+                              //_role = value;
+                              //});
+                              //  },
+                              // ),
+                              // ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.resolveWith<Color>(
@@ -143,20 +181,20 @@ class IndexState extends State<IndexPage> {
                                 onPressed: onJoin,
                                 child: Text(
                                   'Join your buddies',
-                                  style: GoogleFonts.aBeeZee(
+                                  style: TextStyle(
                                     fontSize: 25,
                                     color: Colors.white,
                                   ),
                                 ),
                               ),
-                            )
-                          ],
-                        ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
