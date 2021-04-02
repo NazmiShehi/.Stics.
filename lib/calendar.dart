@@ -1,6 +1,8 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
+import 'package:stics/page1.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -15,11 +17,14 @@ class _CalendarState extends State<Calendar> {
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red[300],
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Page1()),
+          );
         },
-        child: Icon(Icons.arrow_back),
+        child: Icon(Icons.check),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -27,7 +32,7 @@ class _CalendarState extends State<Calendar> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Colors.lightBlue[200],
+              Colors.red[200],
               Colors.purple[200],
             ],
           ),
@@ -43,18 +48,11 @@ class _CalendarState extends State<Calendar> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                      child: Image(
-                        image: AssetImage('assets/stics4.png'),
-                        width: 150,
-                      ),
-                    ),
-                    Padding(
                       padding: const EdgeInsets.fromLTRB(25, 30, 25, 30),
                       child: Text(
                         'When do you want to meet your buddies next time?',
-                        style: TextStyle(
-                          color: Colors.white,
+                        style: GoogleFonts.nunito(
+                          color: Colors.white70,
                           fontSize: 25,
                         ),
                         textAlign: TextAlign.center,
@@ -90,8 +88,7 @@ class _CalendarState extends State<Calendar> {
                                 const Radius.circular(10.0),
                               ),
                             ),
-                            filled: true,
-                            hintStyle: new TextStyle(color: Colors.grey[800]),
+                            hintStyle: new TextStyle(color: Colors.white70),
                             hintText: "Type in your parent's e-mail",
                             fillColor: Colors.white70),
                       ),

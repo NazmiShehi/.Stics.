@@ -4,6 +4,7 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'call.dart';
 
@@ -44,8 +45,8 @@ class IndexState extends State<IndexPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
+              Colors.red[200],
               Colors.purple[200],
-              Colors.teal[200],
             ],
           ),
         ),
@@ -53,40 +54,41 @@ class IndexState extends State<IndexPage> {
           child: Center(
             child: SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   DelayedDisplay(
                     delay: Duration(seconds: 1),
                     fadingDuration: Duration(seconds: 1),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Image(
-                        image: AssetImage('assets/twobuddies.png'),
-                        height: 150,
-                      ),
+                    child: Image(
+                      image: AssetImage('assets/twobuddies.png'),
+                      height: 150,
                     ),
                   ),
                   Container(
-                    height: 100,
+                    height: 50,
                   ),
                   DelayedDisplay(
                     delay: Duration(
                       seconds: 2,
                     ),
                     fadingDuration: Duration(seconds: 1),
-                    child: Text(
-                      'Are you ready to meet your new buddies?',
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white70,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                      child: Text(
+                        'Are you ready to meet your buddies?',
+                        style: GoogleFonts.nunito(
+                          fontSize: 25,
+                          color: Colors.white70,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                   Container(
-                    height: 100,
+                    height: 50,
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
                     child: DelayedDisplay(
                       delay: Duration(seconds: 4),
                       fadingDuration: Duration(seconds: 1),
@@ -103,13 +105,12 @@ class IndexState extends State<IndexPage> {
                                         : null,
                                     border: OutlineInputBorder(
                                       borderRadius: const BorderRadius.all(
-                                        const Radius.circular(10.0),
+                                        const Radius.circular(18.0),
                                       ),
                                     ),
-                                    filled: true,
                                     hintText:
                                         'How\'s your budddy group called?',
-                                    hintStyle: TextStyle(
+                                    hintStyle: GoogleFonts.nunito(
                                         color: Colors.white70, fontSize: 18)),
                                 style: TextStyle(color: Colors.white70),
                               ))
@@ -162,32 +163,36 @@ class IndexState extends State<IndexPage> {
                               // ),
                             ],
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.resolveWith<Color>(
-                                    (Set<MaterialState> states) {
-                                      if (states
-                                          .contains(MaterialState.pressed)) {
-                                        return Colors.yellow[700];
-                                      }
-                                      return Colors.red[300];
-                                    },
-                                  ),
-                                ),
-                                onPressed: onJoin,
-                                child: Text(
-                                  'Join your buddies',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.white,
-                                  ),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  //  side: BorderSide(color: Colors.lightBlue)
                                 ),
                               ),
-                            ],
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.pressed)) {
+                                    return Colors.purple[200];
+                                  }
+                                  return Colors.red[300];
+                                },
+                              ),
+                            ),
+                            onPressed: onJoin,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                              child: Text(
+                                'Join your buddies',
+                                style: GoogleFonts.nunito(
+                                  fontSize: 23,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),

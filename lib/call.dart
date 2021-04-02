@@ -29,9 +29,7 @@ class _CallPageState extends State<CallPage> {
 
   @override
   void dispose() {
-    // clear users
     _users.clear();
-    // destroy sdk
     _engine.leaveChannel();
     _engine.destroy();
     super.dispose();
@@ -40,7 +38,6 @@ class _CallPageState extends State<CallPage> {
   @override
   void initState() {
     super.initState();
-    // initialize agora sdk
     initialize();
   }
 
@@ -50,7 +47,7 @@ class _CallPageState extends State<CallPage> {
         _infoStrings.add(
           'APP_ID missing, please provide your APP_ID in settings.dart',
         );
-        _infoStrings.add('Agora Engine is not starting');
+        _infoStrings.add('Stics is not starting');
       });
       return;
     }
@@ -64,7 +61,6 @@ class _CallPageState extends State<CallPage> {
     await _engine.joinChannel(Token, widget.channelName, null, 0);
   }
 
-  /// Create agora sdk instance and initialize
   Future<void> _initAgoraRtcEngine() async {
     _engine = await RtcEngine.create(APP_ID);
     await _engine.enableVideo();
@@ -72,7 +68,6 @@ class _CallPageState extends State<CallPage> {
     await _engine.setClientRole(widget.role);
   }
 
-  /// Add agora event handlers
   void _addAgoraEventHandlers() {
     _engine.setEventHandler(RtcEngineEventHandler(error: (code) {
       setState(() {
@@ -109,7 +104,6 @@ class _CallPageState extends State<CallPage> {
     }));
   }
 
-  /// Helper function to get list of native views
   List<Widget> _getRenderViews() {
     final List<StatefulWidget> list = [];
     if (widget.role == ClientRole.Broadcaster) {
@@ -119,7 +113,6 @@ class _CallPageState extends State<CallPage> {
     return list;
   }
 
-  /// Video view wrapper
   Widget _videoView(view) {
     return Expanded(
         child: Container(
@@ -129,7 +122,6 @@ class _CallPageState extends State<CallPage> {
             child: view));
   }
 
-  /// Video view row wrapper
   Widget _expandedVideoRow(List<Widget> views) {
     final wrappedViews = views.map<Widget>(_videoView).toList();
     return Expanded(
@@ -139,7 +131,6 @@ class _CallPageState extends State<CallPage> {
     );
   }
 
-  /// Video layout wrapper
   Widget _viewRows() {
     final views = _getRenderViews();
     switch (views.length) {
@@ -189,7 +180,6 @@ class _CallPageState extends State<CallPage> {
     return Container();
   }
 
-  /// Toolbar layout
   Widget _toolbar() {
     if (widget.role == ClientRole.Audience) return Container();
     return Container(
@@ -202,7 +192,7 @@ class _CallPageState extends State<CallPage> {
             onPressed: _onToggleMute,
             shape: CircleBorder(),
             elevation: 2.0,
-            fillColor: muted ? Colors.blueAccent : Colors.yellow[700],
+            fillColor: muted ? Colors.blueAccent : Colors.purple[200],
             padding: const EdgeInsets.all(12.0),
             child: Icon(
               muted ? Icons.mic_off : Icons.mic,
@@ -226,7 +216,7 @@ class _CallPageState extends State<CallPage> {
             onPressed: _onSwitchCamera,
             shape: CircleBorder(),
             elevation: 2.0,
-            fillColor: Colors.yellow[700],
+            fillColor: Colors.purple[200],
             padding: const EdgeInsets.all(12.0),
             child: Icon(
               Icons.switch_camera,
@@ -239,7 +229,6 @@ class _CallPageState extends State<CallPage> {
     );
   }
 
-  /// Info panel to show logs
   Widget _panel() {
     return Container(
       decoration: BoxDecoration(
@@ -320,7 +309,7 @@ class _CallPageState extends State<CallPage> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red[200], Colors.purple[200]])),
+                colors: [Colors.red[200], Colors.purple[100]])),
         child: SafeArea(
           child: Center(
             child: Padding(
@@ -329,7 +318,7 @@ class _CallPageState extends State<CallPage> {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.yellow[200],
+                      color: Colors.purple[100],
                       spreadRadius: 6,
                       blurRadius: 8,
                       offset: Offset(0, 3),

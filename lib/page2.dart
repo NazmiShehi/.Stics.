@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stics/calendar.dart';
 import 'page1.dart';
 import 'index.dart';
@@ -46,7 +47,7 @@ class _Page2State extends State<Page2> {
                     alignment: Alignment.center,
                     child: Text(
                       'Looking for your buddies...',
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                         fontSize: 30,
                         color: Colors.white70,
                       ),
@@ -62,7 +63,7 @@ class _Page2State extends State<Page2> {
                     alignment: Alignment.center,
                     child: Text(
                       'Your buddies are currently offline',
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                         fontSize: 30,
                         color: Colors.white70,
                       ),
@@ -70,18 +71,23 @@ class _Page2State extends State<Page2> {
                   ),
                 ),
               ),
-              Container(
-                height: 100,
-              ),
-
+              Spacer(),
               DelayedDisplay(
                 delay: Duration(seconds: 5),
+                // child: Padding(
+                //   padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                   style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        //  side: BorderSide(color: Colors.lightBlue)
+                      ),
+                    ),
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
                         if (states.contains(MaterialState.pressed)) {
-                          return Colors.yellow[700];
+                          return Colors.purple[200];
                         }
                         return Colors.red[300];
                       },
@@ -91,24 +97,34 @@ class _Page2State extends State<Page2> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => IndexPage()));
                   },
-                  child: Text(
-                    'Call them now',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                    child: Text(
+                      'Call them now',
+                      style: GoogleFonts.nunito(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                 ),
               ),
+              //),
 
               DelayedDisplay(
                 delay: Duration(seconds: 5),
                 child: ElevatedButton(
                   style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        //  side: BorderSide(color: Colors.lightBlue)
+                      ),
+                    ),
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
                         if (states.contains(MaterialState.pressed)) {
-                          return Colors.yellow[700];
+                          return Colors.purple[200];
                         }
                         return Colors.red[300];
                       },
@@ -118,14 +134,20 @@ class _Page2State extends State<Page2> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Calendar()));
                   },
-                  child: Text(
-                    'Schedule a Call',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                    child: Text(
+                      'Schedule a Call',
+                      style: GoogleFonts.nunito(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                 ),
+              ),
+              Spacer(
+                flex: 3,
               ),
               //    Container(
               //      margin: EdgeInsets.fromLTRB(10, 0, 10, 10),

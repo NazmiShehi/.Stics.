@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:stics/firebase_auth_service.dart';
+import 'package:stics/splash.dart';
 import 'page1.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 String name = '';
 String password = '';
@@ -18,6 +22,20 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red[300],
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Splash(),
+            ),
+          );
+        },
+        child: Icon(
+          Icons.arrow_back_ios_rounded,
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
@@ -26,18 +44,16 @@ class _LoginState extends State<Login> {
               gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
-                  colors: [Colors.purple[200], Colors.teal[200]])),
+                  colors: [Colors.purple[100], Colors.purple[200]])),
           child: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage('assets/stics.png'),
-                  width: 150,
+                  image: AssetImage('assets/pastelstics4.png'),
+                  width: 120,
                 ),
-                Container(
-                  height: 100,
-                ),
+                Spacer(),
                 Column(
                   children: [
                     Row(
@@ -45,7 +61,7 @@ class _LoginState extends State<Login> {
                       children: [
                         CircleAvatar(
                           maxRadius: 30,
-                          backgroundColor: Colors.yellow[700],
+                          backgroundColor: Colors.purple[300],
                           child: Image.asset(
                             'assets/budd1.png',
                             width: 45,
@@ -79,10 +95,9 @@ class _LoginState extends State<Login> {
                               color: Colors.white70,
                             ),
                           ),
-                          onChanged: (text) {
-                            name = text;
-                            print(name);
-                            buddies.add(name);
+                          onChanged: (value) {
+                            name = value;
+                            print(password);
                           },
                         ),
                       ),
@@ -102,8 +117,8 @@ class _LoginState extends State<Login> {
                               color: Colors.white70,
                             ),
                           ),
-                          onChanged: (text) {
-                            password = text;
+                          onChanged: (value) {
+                            password = value;
                             print(password);
                           },
                         ),
@@ -111,18 +126,28 @@ class _LoginState extends State<Login> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            //  side: BorderSide(color: Colors.lightBlue)
+                          ),
+                        ),
                         backgroundColor:
                             MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
                             if (states.contains(MaterialState.pressed)) {
-                              return Colors.yellow[700];
+                              return Colors.purple[200];
                             }
                             return Colors.red[300];
                           },
                         ),
                       ),
                       onPressed: () {
-                        print(buddies);
+                        //  context.read<AuthenticationService>().signIn(
+                        //  email: emailController.text,.trim(),
+                        //password: passwordController.text.trim(),
+                        // );
                         if (name.isNotEmpty) {
                           welcomeText = 'Welcome $name!';
                           if (password.isNotEmpty) {
@@ -134,10 +159,55 @@ class _LoginState extends State<Login> {
                         }
                       },
                       child: Padding(
-                        padding: EdgeInsets.all(5),
+                        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                         child: Text(
                           'Login',
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
+                            fontSize: 30,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            //  side: BorderSide(color: Colors.lightBlue)
+                          ),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.pressed)) {
+                              return Colors.purple[200];
+                            }
+                            return Colors.red[300];
+                          },
+                        ),
+                      ),
+                      onPressed: () {
+                        //  context.read<AuthenticationService>().signIn(
+                        //  email: emailController.text,.trim(),
+                        //password: passwordController.text.trim(),
+                        // );
+                        if (name.isNotEmpty) {
+                          welcomeText = 'Welcome $name!';
+                          if (password.isNotEmpty) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Page1()));
+                          }
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                        child: Text(
+                          'Register',
+                          style: GoogleFonts.nunito(
                             fontSize: 30,
                             color: Colors.white70,
                           ),
@@ -145,6 +215,9 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ],
+                ),
+                Spacer(
+                  flex: 3,
                 ),
               ],
             ),

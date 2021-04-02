@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:stics/page1.dart';
 import 'login.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Page3 extends StatefulWidget {
   @override
@@ -38,14 +39,14 @@ class _Page3State extends State<Page3> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(20, 10, 30, 30),
                 child: Align(
                   alignment: Alignment.center,
                   child: DelayedDisplay(
                     delay: Duration(seconds: 1),
                     child: Text(
                       'Looking for buddies from all over the world...',
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                         fontSize: 30,
                         color: Colors.white70,
                       ),
@@ -53,9 +54,7 @@ class _Page3State extends State<Page3> {
                   ),
                 ),
               ),
-              Container(
-                height: 40,
-              ),
+
               // Align(
               // alignment: Alignment.center,
               // child: DelayedDisplay(
@@ -71,29 +70,35 @@ class _Page3State extends State<Page3> {
               //  ),
 
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: DelayedDisplay(
                   delay: Duration(seconds: 6),
                   child: Text(
                     'Hey $name, your new buddies are waiting for you!',
-                    style: TextStyle(
+                    style: GoogleFonts.nunito(
                       color: Colors.white70,
                       fontSize: 30,
                     ),
                   ),
                 ),
               ),
-              Container(
-                height: 40,
+              Spacer(
+                flex: 2,
               ),
               DelayedDisplay(
                 delay: Duration(seconds: 8),
                 child: ElevatedButton(
                   style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        //  side: BorderSide(color: Colors.lightBlue)
+                      ),
+                    ),
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
                         if (states.contains(MaterialState.pressed)) {
-                          return Colors.purple[300];
+                          return Colors.purple[200];
                         }
                         return Colors.red[300];
                       },
@@ -105,14 +110,20 @@ class _Page3State extends State<Page3> {
                       MaterialPageRoute(builder: (context) => IndexPage()),
                     );
                   },
-                  child: Text(
-                    'Let\'s Start!',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                    child: Text(
+                      'Let\'s Start!',
+                      style: GoogleFonts.nunito(
+                        color: Colors.white,
+                        fontSize: 30,
+                      ),
                     ),
                   ),
                 ),
+              ),
+              Spacer(
+                flex: 3,
               ),
             ],
           ),
