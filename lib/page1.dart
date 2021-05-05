@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stics/auth/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
 import 'page2.dart';
 import 'page3.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 String welcomeText = '';
 
@@ -14,27 +16,6 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
-  // final _auth = FirebaseAuth.instance;
-  // User loggedInUser;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getCurrentUser();
-  // }
-
-  // void getCurrentUser() async {
-  //   try {
-  //     final user = await _auth.currentUser;
-  //     if (user != null) {
-  //       loggedInUser = user;
-  //       print(loggedInUser.email);
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,6 +125,39 @@ class _Page1State extends State<Page1> {
                         ),
                       ),
                     ],
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          //  side: BorderSide(color: Colors.lightBlue)
+                        ),
+                      ),
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.pressed)) {
+                            return Colors.purple[200];
+                          }
+                          return Colors.red[300];
+                        },
+                      ),
+                    ),
+                    onPressed: () {
+                      context.read<AuthenticationService>().signOut();
+                    },
+                    child: Text(
+                      'Sign Out',
+                      style: GoogleFonts.nunito(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ],
               ),

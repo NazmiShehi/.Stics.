@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stics/firebase_auth_service.dart';
+import 'package:stics/auth/auth_service.dart';
 import 'package:stics/splash.dart';
 import 'page1.dart';
+import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 String name = '';
@@ -13,11 +14,15 @@ bool girlTapped = false;
 var color = Colors.yellow;
 
 class Login extends StatefulWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,12 +90,13 @@ class _LoginState extends State<Login> {
                       child: Container(
                         width: 150,
                         child: TextField(
+                          controller: emailController,
                           obscureText: false,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            labelText: 'Username',
+                            labelText: 'email',
                             labelStyle: TextStyle(
                               color: Colors.white70,
                             ),
@@ -107,6 +113,7 @@ class _LoginState extends State<Login> {
                       child: Container(
                         width: 150,
                         child: TextField(
+                          controller: passwordController,
                           obscureText: true,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -144,18 +151,14 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       onPressed: () {
-                        //  context.read<AuthenticationService>().signIn(
-                        //  email: emailController.text,.trim(),
-                        //password: passwordController.text.trim(),
-                        // );
+                        context.read<AuthenticationService>().signIn(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                            );
+
                         if (name.isNotEmpty) {
                           welcomeText = 'Welcome $name!';
-                          if (password.isNotEmpty) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Page1()));
-                          }
+                          if (password.isNotEmpty) {}
                         }
                       },
                       child: Padding(

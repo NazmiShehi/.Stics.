@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stics/login.dart';
-import 'package:stics/splash2.dart';
 import 'package:stics/tutorial.dart';
 import 'package:lottie/lottie.dart';
 

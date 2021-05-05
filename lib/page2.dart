@@ -1,7 +1,7 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stics/calendar.dart';
-import 'page1.dart';
 import 'index.dart';
+import 'page1.dart';
 import 'package:flutter/material.dart';
 import 'package:delayed_display/delayed_display.dart';
 
@@ -18,7 +18,7 @@ class _Page2State extends State<Page2> {
     return Scaffold(
       extendBody: true,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red[300],
+        backgroundColor: Colors.green[300],
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Page1()));
